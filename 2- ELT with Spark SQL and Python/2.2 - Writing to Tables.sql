@@ -30,6 +30,10 @@ SELECT * FROM parquet.`${dataset.bookstore}/orders`
 
 -- COMMAND ----------
 
+SELECT * FROM orders
+
+-- COMMAND ----------
+
 DESCRIBE HISTORY orders
 
 -- COMMAND ----------
@@ -39,12 +43,25 @@ SELECT * FROM parquet.`${dataset.bookstore}/orders`
 
 -- COMMAND ----------
 
+SELECT * FROM orders
+
+-- COMMAND ----------
+
 DESCRIBE HISTORY orders
 
 -- COMMAND ----------
 
 INSERT OVERWRITE orders
 SELECT *, current_timestamp() FROM parquet.`${dataset.bookstore}/orders`
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE orders_orders AS
+SELECT *, current_timestamp() timestamp_ FROM parquet.`${dataset.bookstore}/orders`
+
+-- COMMAND ----------
+
+DESCRIBE HISTORY orders_orders
 
 -- COMMAND ----------
 

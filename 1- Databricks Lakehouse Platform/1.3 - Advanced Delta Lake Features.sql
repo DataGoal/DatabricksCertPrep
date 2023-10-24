@@ -95,7 +95,11 @@ VACUUM employees RETAIN 0 HOURS
 
 -- COMMAND ----------
 
-SELECT * FROM employees@v1
+DESCRIBE HISTORY employees
+
+-- COMMAND ----------
+
+SELECT * FROM employees@v8
 
 -- COMMAND ----------
 

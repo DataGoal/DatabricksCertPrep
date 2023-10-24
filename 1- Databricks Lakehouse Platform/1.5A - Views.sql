@@ -45,6 +45,10 @@ SHOW TABLES;
 
 -- COMMAND ----------
 
+DESCRIBE EXTENDED view_apple_phones
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC
 -- MAGIC ## Creating Temporary Views
@@ -63,6 +67,10 @@ SHOW TABLES;
 
 -- COMMAND ----------
 
+DESCRIBE EXTENDED temp_view_phones_brands
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC
 -- MAGIC ## Creating Global Temporary Views
@@ -73,6 +81,10 @@ CREATE GLOBAL TEMP VIEW global_temp_view_latest_phones
 AS SELECT * FROM smartphones
     WHERE year > 2020
     ORDER BY year DESC;
+
+-- COMMAND ----------
+
+DESCRIBE EXTENDED global_temp.global_temp_view_latest_phones
 
 -- COMMAND ----------
 
@@ -89,3 +101,7 @@ SHOW TABLES IN global_temp;
 -- COMMAND ----------
 
 SHOW TABLES
+
+-- COMMAND ----------
+
+

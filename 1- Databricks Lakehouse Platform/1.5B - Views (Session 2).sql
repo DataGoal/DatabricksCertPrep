@@ -3,6 +3,10 @@ SHOW TABLES;
 
 -- COMMAND ----------
 
+
+
+-- COMMAND ----------
+
 SHOW TABLES IN global_temp;
 
 -- COMMAND ----------

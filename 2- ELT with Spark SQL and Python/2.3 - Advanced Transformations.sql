@@ -66,6 +66,10 @@ SELECT * FROM customers_final
 
 -- COMMAND ----------
 
+DESCRIBE orders
+
+-- COMMAND ----------
+
 SELECT order_id, customer_id, books
 FROM orders
 

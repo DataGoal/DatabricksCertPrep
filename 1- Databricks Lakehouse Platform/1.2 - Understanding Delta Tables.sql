@@ -4,8 +4,30 @@
 
 -- COMMAND ----------
 
-CREATE TABLE employees
+CREATE TABLE IF NOT EXISTS employees
   (id INT, name STRING, salary DOUBLE);
+
+-- COMMAND ----------
+
+
+
+-- COMMAND ----------
+
+DROP TABLE employees
+
+-- COMMAND ----------
+
+
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC dbutils.fs.ls("dbfs:/user/hive/warehouse/employees/_delta_log")
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC spark.read.json("dbfs:/user/hive/warehouse/employees/_delta_log/00000000000000000000.json").show()
 
 -- COMMAND ----------
 
@@ -25,7 +47,7 @@ CREATE TABLE employees
 -- NOTE: With latest Databricks Runtimes, inserting few records in single transaction is optimized into single data file.
 -- For this demo, we will insert the records in multiple transactions in order to create 4 data files.
 
-INSERT INTO employees
+INSERT INTO hive_metastore.default.employees
 VALUES 
   (1, "Adam", 3500.0),
   (2, "Sarah", 4020.5);

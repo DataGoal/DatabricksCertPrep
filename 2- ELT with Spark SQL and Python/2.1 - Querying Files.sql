@@ -44,6 +44,17 @@ SELECT count(*) FROM json.`${dataset.bookstore}/customers-json`
 
 -- COMMAND ----------
 
+ CREATE TABLE books_json_sample AS
+ SELECT *,
+    input_file_name() source_file
+  FROM json.`${dataset.bookstore}/customers-json`;
+
+-- COMMAND ----------
+
+DESCRIBE EXTENDED books_json_sample
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC ## Querying text Format
 
@@ -84,6 +95,17 @@ LOCATION "${dataset.bookstore}/books-csv"
 -- COMMAND ----------
 
 SELECT * FROM books_csv
+
+-- COMMAND ----------
+
+CREATE TABLE books_json_delta_test
+  (customer_id STRING, email STRING, profile STRING, updated STRING, source_file DOUBLE)
+USING JSON
+LOCATION "${dataset.bookstore}/customers-json"
+
+-- COMMAND ----------
+
+DESCRIBE EXTENDED books_json_delta_test
 
 -- COMMAND ----------
 
@@ -149,6 +171,10 @@ CREATE TABLE books_unparsed AS
 SELECT * FROM csv.`${dataset.bookstore}/books-csv`;
 
 SELECT * FROM books_unparsed;
+
+-- COMMAND ----------
+
+DESCRIBE EXTENDED books_unparsed
 
 -- COMMAND ----------
 
